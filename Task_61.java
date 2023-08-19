@@ -11,17 +11,25 @@ public class Task_61 {
     Scanner scanner = new Scanner(System.in);
     int min = Integer.MAX_VALUE;
     System.out.println("Введите необходимое количество чисел");
-    int count = scanner.nextInt();
-    System.out.println("Введите " + count + " положительных чисел, каждое с новой строки");
+    while (scanner.hasNextInt()) {
+      int count = scanner.nextInt();
+      System.out.println("Введите " + count + " положительных чисел, каждое с новой строки");
 
-    for (int i = 0; i < count; i++) {
-      int number = scanner.nextInt();
+      for (int i = 0; i < count; i++) {
+        while (scanner.hasNextInt()) {
+          int number = scanner.nextInt();
 
-      if(number % 2 == 0 && number < min){
-        min = number;
+          if (number % 2 == 0 && number < min) {
+            min = number;
+          }
+        }
       }
-    } System.out.println(min);
+    }
 
+    if (min == Integer.MAX_VALUE) {
+      System.out.println(-1);
+    } else {
+      System.out.println(min);
+    }
   }
 }
-
