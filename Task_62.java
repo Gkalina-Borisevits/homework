@@ -12,14 +12,14 @@ public class Task_62 {
     while (scanner.hasNextInt()) {
       int number = scanner.nextInt();
       System.out.println(reverse(number));
-      if (number == 0) {
+     if (number <= 0) {
         break;
       }
     }
   }
 
   public static String reverse(int x) {
-    if (x <= 9) {
+    if (x <= 10) {
       return Integer.toString(x);
     } else {
       return x % 10 + reverse(x / 10);
