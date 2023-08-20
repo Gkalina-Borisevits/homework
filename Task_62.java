@@ -5,18 +5,23 @@ public class Task_62 {
   // содержащую десятичные цифры числа в обратном порядке (развернёт число).
  public static void main(String[] args) {
    Scanner scanner = new Scanner(System.in);
+   System.out.println("Для выхода из программы введите 0");
+   System.out.println("Введите положительное целое число: ");
 
-   System.out.print("Введите положительное целое число: ");
    while (scanner.hasNextInt()){
      int number = scanner.nextInt();
      System.out.println(reverse(number));
+     if(number == 0){
+       break;
+     }
    }
  }
   public static String reverse(int x) {
-   if (x <=9) {
-     return null;
+   if (x <= 9) {
+     return Integer.toString(x);
    } else {
      return x % 10 + reverse(x / 10);
    }
   }
+
 }
