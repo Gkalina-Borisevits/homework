@@ -12,7 +12,7 @@ public class Task_62 {
     while (scanner.hasNextInt()) {
       int number = scanner.nextInt();
       System.out.println(reverse(number));
-     if (number <= 0) {
+      if (number <= 0) {
         break;
       }
     }
