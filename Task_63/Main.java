@@ -62,9 +62,8 @@ public class Main {
   }
 
   private static void printComparisonByAuthorAndTitles(List<Book> books) {
-    for (Book book : books) {
-      System.out.println(book);
+    for (int i = 0; i < books.size(); i++) {
+      System.out.println((i+1) + ". " + books.get(i));
     }
-
   }
 }
