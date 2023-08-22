@@ -2,7 +2,6 @@ package Task_63;
 
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -16,6 +15,7 @@ public class Main {
     ArrayList<Book> books = new ArrayList<>();
 
     books.add(new Book("Дэниел Киз", "Таинственная история Билли Миллигана", 320));
+    books.add(new Book("Дэниел Киз", "Aaa", 320));
     books.add(new Book("Джордж Оруэлл", "Скотный двор", 360));
     books.add(new Book("Уильям Голдинг", "Повелитель мух", 190));
     books.add(new Book("Дэниел Киз", "Цветы для Элджернона", 290));
@@ -27,7 +27,8 @@ public class Main {
     while (isRun) {
       System.out.println("\t\t\tВыберите способ сортировки:");
       System.out.println("1. По автору книги");
-      System.out.println("2. По названию книги");
+      System.out.println("2. При одинаковых авторах - по названию");
+      System.out.println("3. По названию книги");
       System.out.println("0. Выход");
 
       if (scanner.hasNextInt()) {
@@ -39,6 +40,9 @@ public class Main {
             printComparisonByAuthor(books);
             break;
           case 2:
+            printComparisonByAuthorAndByTitles(books);
+            break;
+          case 3:
             printComparisonByTitles(books);
             break;
           case 0:
@@ -57,6 +61,21 @@ public class Main {
     books.sort(new Comparator<Book>() {
       @Override
       public int compare(Book o1, Book o2) {
+        return o1.getAuthorBook().compareTo(o2.getAuthorBook());
+      }
+    });
+    printComparisonByAuthorAndTitles(books);
+  }
+
+  private static void printComparisonByAuthorAndByTitles(ArrayList<Book> books) {
+    books.sort(new Comparator<Book>() {
+      @Override
+      public int compare(Book o1, Book o2) {
+
+        int author = o1.getAuthorBook().compareTo(o2.getAuthorBook());
+        if (author == 0) {
+          return o1.getNameBook().compareTo(o2.getNameBook());
+        }
         return o1.getAuthorBook().compareTo(o2.getAuthorBook());
       }
     });
