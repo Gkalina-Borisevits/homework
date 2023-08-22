@@ -13,7 +13,7 @@ public class Main {
 
   public static void main(String[] args) {
     Scanner scanner = new Scanner(System.in);
-    List<Book> books = new ArrayList<>();
+    ArrayList<Book> books = new ArrayList<>();
 
     books.add(new Book("Дэниел Киз", "Таинственная история Билли Миллигана", 320));
     books.add(new Book("Джордж Оруэлл", "Скотный двор", 360));
@@ -23,25 +23,37 @@ public class Main {
     books.add(new Book("Антуан де Сент-Экзюпери", "Маленький принц", 210));
     books.add(new Book("Олдос Хаксли", "О дивный новый мир", 360));
 
-    System.out.println("Выберите способ сортировки:");
-    System.out.println("1. По автору книги");
-    System.out.println("2. По названию книги");
-    int mode = scanner.nextInt();
-    scanner.nextLine();
-    switch (mode) {
-      case 1:
-        printComparisonByAuthor(books);
-        break;
-      case 2:
-        printComparisonByTitles(books);
-        break;
-      default:
-        System.out.println("Нет такой опции");
-        break;
+    boolean isRun = true;
+    while (isRun) {
+      System.out.println("\t\t\tВыберите способ сортировки:");
+      System.out.println("1. По автору книги");
+      System.out.println("2. По названию книги");
+      System.out.println("0. Выход");
+
+      if (scanner.hasNextInt()) {
+        int command = scanner.nextInt();
+        scanner.nextLine();
+
+        switch (command) {
+          case 1:
+            printComparisonByAuthor(books);
+            break;
+          case 2:
+            printComparisonByTitles(books);
+            break;
+          case 0:
+            System.out.println("До встречи");
+            isRun = false;
+            break;
+          default:
+            System.out.println("Нет такой опции");
+            break;
+        }
+      }
     }
   }
 
-  private static void printComparisonByAuthor(List<Book> books) {
+  private static void printComparisonByAuthor(ArrayList<Book> books) {
     books.sort(new Comparator<Book>() {
       @Override
       public int compare(Book o1, Book o2) {
@@ -51,7 +63,7 @@ public class Main {
     printComparisonByAuthorAndTitles(books);
   }
 
-  private static void printComparisonByTitles(List<Book> books) {
+  private static void printComparisonByTitles(ArrayList<Book> books) {
     books.sort(new Comparator<Book>() {
       @Override
       public int compare(Book o1, Book o2) {
@@ -61,9 +73,9 @@ public class Main {
     printComparisonByAuthorAndTitles(books);
   }
 
-  private static void printComparisonByAuthorAndTitles(List<Book> books) {
+  private static void printComparisonByAuthorAndTitles(ArrayList<Book> books) {
     for (int i = 0; i < books.size(); i++) {
-      System.out.println((i+1) + ". " + books.get(i));
+      System.out.println((i + 1) + ". " + books.get(i));
     }
   }
 }
