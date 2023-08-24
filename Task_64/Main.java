@@ -60,14 +60,14 @@ public class Main {
 
   public static void printComparisonByAuthorAndByTitles(ArrayList<Book> books) {
     books.stream()
-        .sorted((o1, o2) -> {
+         .sorted((o1, o2) -> {
           if (!o1.getAuthorBook().equals(o2.getAuthorBook())) {
             return o1.getAuthorBook().compareTo(o2.getAuthorBook());
 
           }
           return o1.getNameBook().compareTo(o2.getNameBook());
         })
-        .forEach(book -> System.out.println(book));
+         .forEach(book -> System.out.println(book));
   }
 
   private static void printComparisonByAuthor(ArrayList<Book> books) {
