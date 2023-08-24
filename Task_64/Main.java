@@ -72,18 +72,18 @@ public class Main {
 
   private static void printComparisonByAuthor(ArrayList<Book> books) {
     books.stream()
-        .sorted((o1, o2) -> {
+         .sorted((o1, o2) -> {
           return o1.getAuthorBook().compareTo(o2.getAuthorBook());
         })
-        .forEach(book -> System.out.println(book));
+         .forEach(book -> System.out.println(book));
   }
 
 
   private static void printComparisonByTitles(ArrayList<Book> books) {
     books.stream()
-        .sorted((o1, o2) -> {
+         .sorted((o1, o2) -> {
           return o1.getNameBook().compareTo(o2.getNameBook());
         })
-        .forEach(book -> System.out.println(book));
+         .forEach(book -> System.out.println(book));
   }
 }
