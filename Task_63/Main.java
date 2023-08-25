@@ -73,10 +73,10 @@ public class Main {
       public int compare(Book o1, Book o2) {
 
         int author = o1.getAuthorBook().compareTo(o2.getAuthorBook());
-        if (author == 0) {
-          return o1.getNameBook().compareTo(o2.getNameBook());
+        if ( author!= 0) {
+          return author;
         }
-        return o1.getAuthorBook().compareTo(o2.getAuthorBook());
+        return o1.getNameBook().compareTo(o2.getNameBook());
       }
     });
     printComparisonByAuthorAndTitles(books);

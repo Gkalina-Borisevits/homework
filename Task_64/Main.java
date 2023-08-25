@@ -61,9 +61,9 @@ public class Main {
   public static void printComparisonByAuthorAndByTitles(ArrayList<Book> books) {
     books.stream()
          .sorted((o1, o2) -> {
-          if (!o1.getAuthorBook().equals(o2.getAuthorBook())) {
-            return o1.getAuthorBook().compareTo(o2.getAuthorBook());
-
+           int author = o1.getAuthorBook().compareTo(o2.getAuthorBook());
+          if (author != 0) {
+            return author;
           }
           return o1.getNameBook().compareTo(o2.getNameBook());
         })
@@ -75,7 +75,7 @@ public class Main {
          .sorted((o1, o2) -> {
           return o1.getAuthorBook().compareTo(o2.getAuthorBook());
         })
-         .forEach(book -> System.out.println(book));
+         .forEach(System.out::println);
   }
 
 
